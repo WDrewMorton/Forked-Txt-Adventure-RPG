@@ -1,0 +1,5 @@
+Lobby
+Dining Hall
+Bathroom
+Waiting Area
+Exit
