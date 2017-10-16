@@ -15,24 +15,13 @@ import javax.swing.*;
 
 public class Main {
 	
+	private static File file;
+	private static ArrayList<String> rooms = new ArrayList<String>();
+	
 	public static void main(String[] args){
-			
-		
-		File file = new File("World.txt");
-		ArrayList<String> rooms = new ArrayList<String>();
-		
-		try {
-			Scanner sc = new Scanner(file);
-			while (sc.hasNextLine()) {
-				rooms.add(sc.nextLine());
-			}
-			sc.close();
-			
-		}  catch (FileNotFoundException e) {
-	        e.printStackTrace();
-	    }
-		
-	    Room Room = new Room(rooms.get(0), rooms.get(1), rooms.get(2), rooms.get(3), rooms.get(4));
+		setFile("World.txt");
+		scanTextFile(file);
+	    Room Room = new Room(getRooms().get(0), rooms.get(1), rooms.get(2), rooms.get(3), rooms.get(4));
 	    
 	    System.out.println(Room.getCurrentRoom());
 	    System.out.println(Room.getNorthRoom());
@@ -41,5 +30,47 @@ public class Main {
 	    System.out.println(Room.getWestRoom());
 	    
 	  }
+	
+	/*
+	 * scanTextFile()
+	 * Desc: Use to read game file from World.txt
+	 * @param file: the file should be a text document in order for it to be read
+	 */
+	private static void scanTextFile(File file) {
+		ArrayList<String> tempRooms = new ArrayList<String>();
+		try {
+			Scanner sc = new Scanner(file);
+			while (sc.hasNextLine()) {
+				tempRooms.add(sc.nextLine());
+			}
+			
+			if (tempRooms.equals(rooms)) {
+
+			}
+			else {
+				setRooms(tempRooms);
+			}
+			sc.close();
+			
+		}	catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static ArrayList<String> getRooms() {
+		return rooms;
+	}
+	
+	public static void setRooms(ArrayList<String> rooms) {
+		Main.rooms = rooms;
+	}
+
+	public static File getFile() {
+		return file;
+	}
+
+	public static void setFile(String fileName) {
+		Main.file = new File(fileName);
+	}
 
 }
