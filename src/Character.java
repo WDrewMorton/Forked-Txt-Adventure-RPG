@@ -1,12 +1,17 @@
 /**
- * 
- */
-
-/**
  * @author Drew Morton
  *
  */
 public class Character {
+	
+	/*
+	* Ideally each of the required parameters will be an object or set by the player.
+	* Name = set by user
+	* Attack =  set by a Weapon object
+	* Health and Power = set by Class object
+	* PowerName = set by Class attribute maybe by user?? 
+	* Weapon = set by Weapon object
+	*/
 	
 	// Required Parameters
 	  private String name;
@@ -21,13 +26,13 @@ public class Character {
 
 
 
-	  /**
-	 * @return the name
-	 */
+	/**
+	* @return the name
+	*/
 	public String getName() {
 		return name;
 	}
-
+	
 	/**
 	 * @return the attack
 	 */
@@ -35,10 +40,30 @@ public class Character {
 		return attack;
 	}
 
+	/**
+	 * @return the health
+	 */
+	public int getHealth() {
+		return attack;
+	}
+	
+	/**
+	 * @return the attack
+	 */
+	public int getAttack() {
+		return attack;
+	}
+	
+	/**
+	 * @return the attack
+	 */
 	public String getPowerName() {
 		return powerName;
 	}
-
+	
+	/**
+	 * @return the attack
+	 */
 	public String getWeapon() {
 		return weapon;
 	}
