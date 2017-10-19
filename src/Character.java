@@ -44,25 +44,25 @@ public class Character {
 	 * @return the health
 	 */
 	public int getHealth() {
-		return attack;
+		return health;
 	}
 	
 	/**
-	 * @return the attack
+	 * @return the power
 	 */
-	public int getAttack() {
-		return attack;
+	public int getPower() {
+		return power;
 	}
 	
 	/**
-	 * @return the attack
+	 * @return the powerName
 	 */
 	public String getPowerName() {
 		return powerName;
 	}
 	
 	/**
-	 * @return the attack
+	 * @return the weapon
 	 */
 	public String getWeapon() {
 		return weapon;
