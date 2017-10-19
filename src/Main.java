@@ -17,6 +17,7 @@ public class Main {
 	
 	private static File file;
 	private static ArrayList<String> rooms = new ArrayList<String>();
+	public Character C;
 	
 	public static void main(String[] args){
 		setFile("World.txt");
@@ -71,6 +72,7 @@ public class Main {
 
 	public static void setFile(String fileName) {
 		Main.file = new File(fileName);
+		C = new Character.CharacterBuilder("Drew", "Swing", 100, 10, "Mighty Swing", "Sword")
 	}
 
 }
