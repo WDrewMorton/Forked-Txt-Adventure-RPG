@@ -1,5 +1,46 @@
-Lobby
+**NOTES**
+* This text document is subject to change just as much as the code is, so we will need to keep a notes section for the header here as well.
+* We can denote the currentRoom with the '[' and ']' brackets. Each room has to have all four directions filled, and any direction that is
+* filled with NONE means that the player will not be able to choose that direction while in that room.
+*********
+
+[Lobby]
 Dining Hall
 Bathroom
 Waiting Area
 Exit
+
+
+[Dining Hall]
+NONE
+Lobby
+Kitchen
+NONE
+
+
+[Bathroom]
+Lobby
+NONE
+NONE
+NONE
+
+
+[Waiting Area]
+NONE
+NONE
+Lobby
+NONE
+
+
+[Kitchen]
+NONE
+NONE
+NONE
+Dining Hall
+
+
+[Exit]
+NONE
+NONE
+NONE
+NONE

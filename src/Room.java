@@ -16,6 +16,9 @@ public class Room{
 	    this.westRoom = westRoom;
 	}
 	  
+	public Room() {
+	}
+
 	public void setCurrentRoom(String currentRoom){
 		this.currentRoom = currentRoom;
 	 }

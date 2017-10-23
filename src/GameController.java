@@ -13,56 +13,81 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import javax.swing.*; 
 
-public class Main {
+public class GameController {
 	
 	private static File file;
-	private static ArrayList<String> rooms = new ArrayList<String>();
+	private static ArrayList<String> roomList = new ArrayList<String>();
 	
 	public static void main(String[] args){
 		setFile("World.txt");
-		scanTextFile(file);
-	    Room Room = new Room(getRooms().get(0), rooms.get(1), rooms.get(2), rooms.get(3), rooms.get(4));
-	    
-	    System.out.println(Room.getCurrentRoom());
-	    System.out.println(Room.getNorthRoom());
-	    System.out.println(Room.getSouthRoom());
-	    System.out.println(Room.getEastRoom());
-	    System.out.println(Room.getWestRoom());
+		Room room = new Room();
+		room.setCurrentRoom("Bathroom");
+		scanTextFile(file, room);
+	    System.out.println(room.getNorthRoom());
+	    System.out.println(room.getSouthRoom());
+	    System.out.println(room.getEastRoom());
+	    System.out.println(room.getWestRoom());
 	    
 	  }
 	
 	/*
-	 * scanTextFile()
+	 * update(Room room)
+	 * Desc: Whenever new information or data is stored or changed, this will update the "player view".
+	 * @param room: room object needed for any changes or updates within it.
+	 */
+	public static void update(Room room) {
+		room.setCurrentRoom(roomList.get(0));
+		room.setNorthRoom(roomList.get(1));
+		room.setSouthRoom(roomList.get(2));
+		room.setEastRoom(roomList.get(3));
+		room.setWestRoom(roomList.get(4));
+	}
+	
+	/*
+	 * scanTextFile(File file, Room room)
 	 * Desc: Use to read game file from World.txt
 	 * @param file: the file should be a text document in order for it to be read
+	 * @param room: the room object that it is reading from and updating is considered here the "player view"
 	 */
-	private static void scanTextFile(File file) {
+	private static void scanTextFile(File file, Room room) {
 		ArrayList<String> tempRooms = new ArrayList<String>();
+		String strRoom = "[" + room.getCurrentRoom() + "]";
 		try {
 			Scanner sc = new Scanner(file);
-			while (sc.hasNextLine()) {
-				tempRooms.add(sc.nextLine());
+			String strLine = "";
+			tempRooms.add(room.getCurrentRoom());
+			while ((strLine = sc.nextLine()) != null && sc.hasNextLine()) {
+				if (strLine.equals(strRoom)) {
+					for (int i = 0; i <=3; i++) {
+						tempRooms.add(sc.nextLine());
+					}
+					break;
+				}
 			}
-			
-			if (tempRooms.equals(rooms)) {
+				
+			if (tempRooms.equals(roomList)) {
 
 			}
+				
 			else {
-				setRooms(tempRooms);
+				setRoomList(tempRooms);
+				update(room);
 			}
-			sc.close();
 			
+			sc.close();
+				
 		}	catch (FileNotFoundException e) {
-			e.printStackTrace();
+				e.printStackTrace();
 		}
 	}
+		
 	
-	public static ArrayList<String> getRooms() {
-		return rooms;
+	public static ArrayList<String> getRoomList() {
+		return roomList;
 	}
 	
-	public static void setRooms(ArrayList<String> rooms) {
-		Main.rooms = rooms;
+	public static void setRoomList(ArrayList<String> roomList) {
+		GameController.roomList = roomList;
 	}
 
 	public static File getFile() {
@@ -70,7 +95,7 @@ public class Main {
 	}
 
 	public static void setFile(String fileName) {
-		Main.file = new File(fileName);
+		GameController.file = new File(fileName);
 	}
 
 }
