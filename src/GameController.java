@@ -21,6 +21,8 @@ public class GameController {
 	public static void main(String[] args){
 		setFile("World.txt");
 		Room room = new Room();
+		GameView gameView = new GameView();
+		gameView.setStartVisible();
 		room.setCurrentRoom("Bathroom");
 		scanTextFile(file, room);
 	    System.out.println(room.getNorthRoom());
